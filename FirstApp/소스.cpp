@@ -7,7 +7,11 @@
 
 int main()
 {
-	printf("Hello World");
+	printf("Hello World\n");
+	
+	// template
+	// type here
+
 	system("pause");
 	// 여기는 주석입니다.
 	// this is a comment
