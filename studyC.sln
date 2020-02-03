@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DivideTest", "DivideTest\Di
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TypeChangeTest", "TypeChangeTest\TypeChangeTest.vcxproj", "{DC657246-52CE-4E29-AA7B-0E3AC6520628}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RebuildOne", "RebuildOne\RebuildOne.vcxproj", "{39403826-1370-47C7-980D-2C889DEDEF23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -87,6 +89,14 @@ Global
 		{DC657246-52CE-4E29-AA7B-0E3AC6520628}.Release|x64.Build.0 = Release|x64
 		{DC657246-52CE-4E29-AA7B-0E3AC6520628}.Release|x86.ActiveCfg = Release|Win32
 		{DC657246-52CE-4E29-AA7B-0E3AC6520628}.Release|x86.Build.0 = Release|Win32
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Debug|x64.ActiveCfg = Debug|x64
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Debug|x64.Build.0 = Debug|x64
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Debug|x86.ActiveCfg = Debug|Win32
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Debug|x86.Build.0 = Debug|Win32
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Release|x64.ActiveCfg = Release|x64
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Release|x64.Build.0 = Release|x64
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Release|x86.ActiveCfg = Release|Win32
+		{39403826-1370-47C7-980D-2C889DEDEF23}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +109,7 @@ Global
 		{9BC39DD1-19E1-48CA-B415-4EEAB49C2B01} = {43C88BDD-CAC7-4C46-87A2-47DA29FD007B}
 		{543E0627-0B22-41CD-9CD2-50ECE78853CA} = {8946AB74-B372-4B57-8AC4-DF1E7E94DF4D}
 		{DC657246-52CE-4E29-AA7B-0E3AC6520628} = {8946AB74-B372-4B57-8AC4-DF1E7E94DF4D}
+		{39403826-1370-47C7-980D-2C889DEDEF23} = {8946AB74-B372-4B57-8AC4-DF1E7E94DF4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30A40157-B05F-45A7-AD30-11D1256A662F}
