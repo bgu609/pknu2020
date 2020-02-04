@@ -28,8 +28,6 @@ int main(void)
 
     return 0;
 
-	system("pause");
-	return EXIT_SUCCESS;
 }
 
 void input_ary(double* pa, int size)
