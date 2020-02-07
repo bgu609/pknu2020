@@ -58,7 +58,6 @@ int main(void)
 
     struct CompareArray GetArray[512] = { 0 }; // name 갱신용 구조체 배열
 
-
     while (1)
     {
         FCResult = FileCheck(TargetPath); // 파일 식별
