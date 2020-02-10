@@ -41,4 +41,28 @@ void list(void)
 
     printf("head=>num : %d\n", head->num);
     printf("head=>next=>num : %d\n", head -> next -> num);
+
+    printf("list all : ");
+    current = head;
+
+    while (current != NULL)
+    {
+        printf("%d ", current->num);
+        current = current->next;
+    }
+    printf("\n");
+
+    printf("b »èÁ¦\n");
+
+    a.next = &c;
+    b.next = 0;
+
+    current = head;
+
+    while (current != NULL)
+    {
+        printf("%d ", current->num);
+        current = current->next;
+    }
+    printf("\n");
 }
