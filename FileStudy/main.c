@@ -15,12 +15,14 @@
 
 //int file_open();
 //int file_write();
-int std_inout();
+//int std_inout();
+//int binary();
+int open_plus();
 
 // 메인함수
 int main(void)
 {
-    int open= std_inout();
+    int open = open_plus();
 
     system("pause");
     return EXIT_SUCCESS;
@@ -100,5 +102,76 @@ int std_inout(void)
         //putchar(ch);
         fputc(ch, stdout);
     }
+    return 0;
+}
+
+int binary(void)
+{
+    FILE* fp;
+    int ary[10] = { 13,10,13,13,10,26,13,10,13,10 };
+    int i, res;
+
+    fp = fopen("D:\\documents\\a.txt", "wb");
+    for (i = 0; i < 10; i++)
+    {
+        fputc(ary[i], fp);
+    }
+    fclose(fp);
+
+    fp = fopen("D:\\documents\\a.txt", "rt");
+    while (1)
+    {
+        res = fgetc(fp);
+        if (res == EOF)
+        {
+            break;
+        }
+        printf("%4d", res);
+    }
+    fclose(fp);
+
+    return 0;
+}
+
+int open_plus(void)
+{
+    FILE* fp;
+    char str[20];
+
+    fp = fopen("D:\\documents\\a.txt", "a+");
+    if (fp == NULL)
+    {
+        printf("파일을 만들지 못했습니다.\n");
+        return 1;
+    }
+
+    while (1)
+    {
+        printf("과일 이름 : ");
+        scanf("%s", str);
+        if (strcmp(str, "end") == 0)
+        {
+            break;
+        }
+        else if (strcmp(str, "list") == 0)
+        {
+            fseek(fp, 0, SEEK_SET);
+            while (1)
+            {
+                fgets(str, sizeof(str), fp);
+                if (feof(fp))
+                {
+                    break;
+                }
+                printf("%s", str);
+            }
+        }
+        else
+        {
+            fprintf(fp, "%s\n", str);
+        }
+    }
+    fclose(fp);
+
     return 0;
 }
