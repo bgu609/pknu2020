@@ -25,9 +25,6 @@
   <ItemGroup>
     <ClInclude Include="parson.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="example.json" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{6ca09a27-07ea-4c98-94a3-a0a19f6d4c30}</ProjectGuid>

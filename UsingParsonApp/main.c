@@ -24,7 +24,7 @@ JSON_Value* rootValue;
 JSON_Object* rootObject;
 
 // 메인함수
-int main(void) 
+int main(void)
 {
     json_read();
     json_write();
