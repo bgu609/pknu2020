@@ -19,4 +19,10 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="libmysql.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libmysql.lib" />
+  </ItemGroup>
 </Project>
