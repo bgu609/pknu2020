@@ -29,6 +29,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="example.json" />
-    <None Include="package.json" />
   </ItemGroup>
 </Project>

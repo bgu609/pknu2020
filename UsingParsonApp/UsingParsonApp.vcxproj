@@ -27,7 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="example.json" />
-    <None Include="package.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

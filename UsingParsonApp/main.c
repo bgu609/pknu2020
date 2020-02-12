@@ -14,13 +14,14 @@
 
 
 void json_read();
-void json_write(void);
+void json_write();
 
 
 
 /*--------------------------*/
 
-
+JSON_Value* rootValue;
+JSON_Object* rootObject;
 
 // 메인함수
 int main(void) 
@@ -40,16 +41,13 @@ int main(void)
 
 void json_read(void)
 {
-    JSON_Value* rootValue;
-    JSON_Object* rootObject;
-
     rootValue = json_parse_file("package.json");
     rootObject = json_value_get_object(rootValue);
 
     printf("name : %s\n", json_object_get_string(rootObject, "name"));
     printf("version : %s\n", json_object_get_string(rootObject, "version"));
     printf("repo : %s\n", json_object_get_string(rootObject, "repo"));
-    printf("description : %s\n", json_object_get_string(rootObject, "description"));
+    printf("description : %s\n\n", json_object_get_string(rootObject, "description"));
 
     printf("keywords: [ ");
     JSON_Array* keywords = json_object_get_array(rootObject, "keywords");
@@ -58,8 +56,9 @@ void json_read(void)
         printf(" %s ", json_array_get_string(keywords, i));
     }
     printf(" ]\n");
+    printf("\n");
 
-    printf("license : %s\n", json_object_get_string(rootObject, "license"));
+    printf("license : %s\n\n", json_object_get_string(rootObject, "license"));
 
     printf("src:\n");
     JSON_Array* src = json_object_get_array(rootObject, "src");
@@ -67,8 +66,9 @@ void json_read(void)
     {
         printf("  %s\n", json_array_get_string(src, i));
     }
+    printf("\n");
 
-    printf("temp : %.1lf\n", json_object_get_number(rootObject, "temp"));
+    printf("temp : %.1lf\n\n", json_object_get_number(rootObject, "temp"));
 
     /*
     printf("Title : %s\n",json_object_get_string(rootObject,"Title"));
@@ -93,5 +93,29 @@ void json_read(void)
 
 void json_write(void)
 {
+    rootValue = json_value_init_object();
+    rootObject = json_value_get_object(rootValue);
 
+    
+    json_object_set_string(rootObject, "Title","interstellar");
+
+    json_object_set_number(rootObject, "year",2014);
+    json_object_set_number(rootObject, "Runtime", 169);
+
+    json_object_set_string(rootObject, "Genre", "Sci-Fi");
+    json_object_set_string(rootObject, "Director", "Christopher Nolan");
+
+    json_object_set_value(rootObject, "Actors", json_value_init_array());
+    JSON_Array* actors=json_object_get_array(rootObject, "Actors");
+    json_array_append_string(actors, "Matthew McConaughey");
+    json_array_append_string(actors, "Anne Hathaway");
+    json_array_append_string(actors, "Michael Caine");
+    json_array_append_string(actors, "Jessica Chastian");
+    json_array_append_string(actors, "Casey Affleck");
+
+    json_object_set_boolean(rootObject, "KoreaRelease", 1);
+
+    json_serialize_to_file_pretty(rootValue, "write.json");
+
+    json_value_free(rootValue);
 }
