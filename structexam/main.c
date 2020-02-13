@@ -27,7 +27,7 @@ int main(void)
 
     for (int i = 0; i < count; i++)
     {
-        printf("%d번 %d과목 점수 입력 : ",i+1,count);
+        printf("%d번 %d과목 점수 입력 : ",i+1, sizeof(struct student) / sizeof(int));
         scanf("%d%d%d", &score[i].kor, &score[i].math, &score[i].eng);
     }
 
