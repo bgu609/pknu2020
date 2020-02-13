@@ -23,11 +23,11 @@ int main(void)
 {
     struct student score[3];
 
-    int count = 3;
+    int count = sizeof(score) / sizeof(score[0]);
 
     for (int i = 0; i < count; i++)
     {
-        printf("%d번 점수 입력 : ",i+1);
+        printf("%d번 %d과목 점수 입력 : ",i+1,count);
         scanf("%d%d%d", &score[i].kor, &score[i].math, &score[i].eng);
     }
 
