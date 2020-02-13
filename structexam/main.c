@@ -16,23 +16,29 @@
 
 struct student { int kor; int math; int eng; };
 
-void score_average(struct student* scores);
+void score_average(struct student* scores, int count);
 
 // ¸ŞÀÎÇÔ¼ö
 int main(void)
 {
-    struct student scores[] = { {10,20,30},{40,50,60},{70,80,90} };
+    struct student score[3];
 
-    score_average(scores);
+    int count = 3;
+
+    for (int i = 0; i < count; i++)
+    {
+        printf("%d¹ø Á¡¼ö ÀÔ·Â : ",i+1);
+        scanf("%d%d%d", &score[i].kor, &score[i].math, &score[i].eng);
+    }
+
+    score_average(score, count);
 
     system("pause");
     return EXIT_SUCCESS;
 }
 
-void score_average(struct student *scores)
+void score_average(struct student *scores, int count)
 {
-    int count = 3;
-
     int sum = 0;
     int avg = 0;
 
@@ -41,8 +47,8 @@ void score_average(struct student *scores)
         sum += scores[i].kor;
     }
     avg = sum / count;
-    printf("kor sum : %d\n", sum);
-    printf("kor avg : %d\n", avg);
+    printf("kor ÃÑÇÕ : %d\n", sum);
+    printf("kor Æò±Õ : %d\n", avg);
 
     sum = 0;
     avg = 0;
@@ -52,8 +58,8 @@ void score_average(struct student *scores)
         sum += scores[i].math;
     }
     avg = sum / count;
-    printf("math sum : %d\n", sum);
-    printf("math avg : %d\n", avg);
+    printf("math ÃÑÇÕ : %d\n", sum);
+    printf("math Æò±Õ : %d\n", avg);
 
     sum = 0;
     avg = 0;
@@ -63,6 +69,6 @@ void score_average(struct student *scores)
         sum += scores[i].eng;
     }
     avg = sum / count;
-    printf("eng sum : %d\n", sum);
-    printf("eng avg : %d\n", avg);
+    printf("eng ÃÑÇÕ : %d\n", sum);
+    printf("eng Æò±Õ : %d\n", avg);
 }
