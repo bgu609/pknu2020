@@ -60,7 +60,7 @@ int main(void)
                 {
                     printf("이미 존재하는 명함입니다!\n");
                     save_num = delete_card(&Card_List[save_num], save_num);
-                    break;
+                    break; 
                 }
             }
 
