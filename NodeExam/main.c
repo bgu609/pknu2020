@@ -28,8 +28,8 @@ int main(void)
 {
     int count = 0;
     int index = 0;
-    char insert;
-    char delete;
+    
+    
 
     NODE* List;
     NODE* head;
@@ -37,8 +37,9 @@ int main(void)
 
     while (1)
     {
+        char insert=0;
         printf("\n리스트를 추가하시겠습니까? (y/n): ");
-        scanf("%c", &insert);
+        insert = getchar();
 
         if (insert == 'n')
         {
@@ -49,15 +50,15 @@ int main(void)
         {
             List = custom_insert(count);
             printNode(count, List);
-            break;
         }
         else
         {
             printf("\n잘못된 명령 입력\n");
         }
 
+        char delete=0;
         printf("\n리스트 연결체를 삭제하시겠습니까? (y/n): ");
-        scanf("%c", &delete);
+        delete = getchar();
 
         if (delete == 'n')
         {
@@ -68,7 +69,6 @@ int main(void)
         {
             List = custom_delete(index, List);
             printNode(count, List);
-            break;
         }
         else
         {
