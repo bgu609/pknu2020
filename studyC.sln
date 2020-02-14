@@ -127,6 +127,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "structexam", "structexam\st
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeExam", "NodeExam\NodeExam.vcxproj", "{8AD6F264-130C-4881-B141-0ED37A6C6598}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeCodeChamber", "NodeCodeChamber\NodeCodeChamber.vcxproj", "{B0448C63-22A7-4521-BB4B-E749DF15C460}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -495,6 +497,14 @@ Global
 		{8AD6F264-130C-4881-B141-0ED37A6C6598}.Release|x64.Build.0 = Release|x64
 		{8AD6F264-130C-4881-B141-0ED37A6C6598}.Release|x86.ActiveCfg = Release|Win32
 		{8AD6F264-130C-4881-B141-0ED37A6C6598}.Release|x86.Build.0 = Release|Win32
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Debug|x64.ActiveCfg = Debug|x64
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Debug|x64.Build.0 = Debug|x64
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Debug|x86.ActiveCfg = Debug|Win32
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Debug|x86.Build.0 = Debug|Win32
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Release|x64.ActiveCfg = Release|x64
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Release|x64.Build.0 = Release|x64
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Release|x86.ActiveCfg = Release|Win32
+		{B0448C63-22A7-4521-BB4B-E749DF15C460}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -545,6 +555,7 @@ Global
 		{1839093D-182D-47E8-BA18-205E19AA4647} = {B4DDBC99-85C0-4733-8903-4B57602339BC}
 		{0DEE5663-6E5B-4A6E-BC95-7D5020D5D94D} = {B4DDBC99-85C0-4733-8903-4B57602339BC}
 		{8AD6F264-130C-4881-B141-0ED37A6C6598} = {B4DDBC99-85C0-4733-8903-4B57602339BC}
+		{B0448C63-22A7-4521-BB4B-E749DF15C460} = {B4DDBC99-85C0-4733-8903-4B57602339BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30A40157-B05F-45A7-AD30-11D1256A662F}
