@@ -11,33 +11,91 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <string.h>
 
+int n = 0;
 
+int array[] = { 69,10,30,2,16,8,31,22 };
+int read = sizeof(array) / sizeof(int);
 
+int pivot(int array[], int start, int end);
+void divide(int array[], int start, int end);
 
 int main(void)
 {
-    for (int num = 2; num < 101; num++)
+    printf("[초기 상태]\n");
+    for (int i = 0; i < read; i++)
     {
-        int count = 0;
+        printf("%d ", array[i]);
+    }
+    printf("\n\n");
 
-        for (int div = 2; div <= num; div++)
-        {
-            if (num % div == 0)
-            {
-                count++;
-            }
-        }
+    int start = 0;
+    int end = sizeof(array) / sizeof(int) - 1;
 
-        if (count == 1)
+
+
+    divide(array, start, end);
+}
+
+int pivot(int array[], int start, int end)
+{
+    int pivot = (end + start) / 2;
+    int Left = start;
+    int Right = end;
+    int change;
+
+    printf("[%d단계 : pivot=%d]\n", ++n, array[pivot]);
+
+    for (Left; Left < end; Left++)
+    {
+        if (array[Left] >= array[pivot])
         {
-            printf("%d ", num);
+            break;
         }
+    }
+
+    for (Right; Right > start; Right--)
+    {
+        if (array[Right] < array[pivot])
+        {
+            break;
+        }
+    }
+
+    printf("%d : %d\n", Left, Right);
+
+    if (Left == Right)
+    {
+        change = array[pivot];
+        array[pivot] = array[Left];
+        array[Left] = change;
+
+        return Left;
+    }
+    else
+    {
+        change = array[Right];
+        array[Right] = array[Left];
+        array[Left] = change;
     }
 }
 
+void divide(int array[], int start, int end)
+{
+    for (int i = 0; i < read; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("\n\n");
+
+    int div;
+    if (start < end)
+    {
+        div = pivot(array, start, end);
+        divide(array, start, div);
+        divide(array, div + 1, end);
+    }
+}
 
 
 /*
@@ -341,6 +399,254 @@ void exam(void)
             printf("%d\t", matrix[i][j]);
         }
         printf("\n");
+    }
+    */
+    
+    /*
+    for (int num = 2; num < 101; num++)
+    {
+        int count = 0;
+
+        for (int div = 2; div <= num; div++)
+        {
+            if (num % div == 0)
+            {
+                count++;
+            }
+
+            if (count > 1)
+            {
+                break;
+            }
+        }
+
+        if (count == 1)
+        {
+            printf("%d ", num);
+        }
+    }
+    */
+    
+    /*
+    int input = 0;
+    int num = 0;
+    int matrix[10][10] = { 0, };
+    int x = 1, y = 0;
+    int temp_x, temp_y;
+
+    printf("입력 : ");
+    scanf("%d", &input);
+
+    while (1)
+    {
+        temp_x = x;
+        temp_y = y;
+
+        x--;
+        y++;
+        num++;
+
+        if (x < 0)
+        {
+            x = input - 1;
+        }
+
+        if (y > input -1 )
+        {
+            y = 0;
+        }
+
+        if (matrix[x][y] != 0)
+        {
+            x = temp_x;
+            y = temp_y;
+            x++;
+        }
+
+        matrix[x][y] = num;
+
+        if (num == input*input)
+        {
+            break;
+        }
+    }
+
+    for (int i = 0; i < input; i++)
+    {
+        for (int j = 0; j < input; j++)
+        {
+            printf("%d\t", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    */
+
+    /*
+    int array[] = { 69,10,30,2,16,8,31,22 };
+    int count = sizeof(array) / sizeof(int);
+    
+
+    printf("%d\n", count);
+
+    int read = count;
+    int start = 0;
+    int min;
+
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                min = array[j + 1];
+                array[j + 1] = array[j];
+                array[j] = min;
+            }
+        }
+
+        printf("%d단계 : ", i + 1);
+        for (int k = 0; k < read; k++)
+        {
+            printf("%d ", array[k]);
+        }
+        printf("\n");
+
+        count--;
+    }
+    */
+
+    /*
+    int array[] = { 69,10,30,2,16,8,31,22 };
+    int count = sizeof(array) / sizeof(int);
+
+
+    printf("%d\n", count);
+
+    int read = count;
+    int start = 0;
+    int min;
+    int min_num;
+
+    for (int i = start; i < count; i++)
+    {
+        min_num = start;
+
+        for (int j = start; j < count - 1; j++)
+        {
+            if (array[min_num] > array[j + 1])
+            {
+                min = array[j + 1];
+                min_num = j + 1;
+            }
+        }
+
+        if (min_num == i)
+        {
+            break;
+        }
+        else
+        {
+            array[min_num] = array[i];
+            array[i] = min;
+        }
+
+        printf("%d단계 : ", i + 1);
+        for (int k = 0; k < read; k++)
+        {
+            printf("%d ", array[k]);
+        }
+        printf("\n");
+
+        start++;
+    }
+    */
+
+    /*
+    int array[] = { 69,10,30,2,16,8,31,22 };
+    int count = sizeof(array) / sizeof(int);
+
+    int read = count;
+    int start = 0;
+    int min;
+
+    printf("정렬할 원소 : ");
+    for (int k = 0; k < read; k++)
+    {
+        printf("%d ", array[k]);
+    }
+    printf("\n");
+
+    for (int i = 0; i < count; i++)
+    {
+        printf("%d단계 : ", i + 1);
+        printf("\n");
+        for (int j = 0; j < count - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                min = array[j + 1];
+                array[j + 1] = array[j];
+                array[j] = min;
+            }
+            for (int k = 0; k < read; k++)
+            {
+                printf("%d ", array[k]);
+            }
+            printf("\n");
+        }
+
+        count--;
+    }
+    */
+
+    /* (rank)
+    int count;
+    printf("입력 인원 : ");
+    scanf("%d", &count);
+
+    int* array = malloc(sizeof(int) * count);
+
+    printf("점수 입력 :\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &array[i]);
+    }
+
+    int start = 0;
+    int min;
+    int read = count;
+    
+    printf("\n");
+    printf("\n");
+    
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                min = array[j + 1];
+                array[j + 1] = array[j];
+                array[j] = min;
+            }
+        }
+        count--;
+    }
+
+    int rank = 1;
+
+    printf("결과 :\n");
+    for (int i = read - 1; i >= 0; i--)
+    {
+        if (array[i] == array[i + 1])
+        {
+            printf("%d (%d)\n", array[i], rank - 1);
+        }
+        else
+        {
+            printf("%d (%d)\n", array[i], rank);
+        }
+        rank++;
     }
     */
 }
