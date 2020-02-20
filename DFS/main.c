@@ -21,19 +21,15 @@ str* node;
 str* make_node(char item, str* Left, str* Right);
 void preorder(str* node);
 
-int main(void) 
+int main(void)
 {
-    str* node11 = make_node('K', NULL, NULL);
-    str* node10 = make_node('J', NULL, NULL);
-    str* node09 = make_node('I', NULL, NULL);
-    str* node08 = make_node('H', NULL, NULL);
-    str* node07 = make_node('G', NULL, node11);
-    str* node06 = make_node('F', NULL, NULL);
-    str* node05 = make_node('E', node09, node10);
-    str* node04 = make_node('D', node08, NULL);
-    str* node03 = make_node('C', node06, node07);
-    str* node02 = make_node('B', node04, node05);
-    str* node01 = make_node('A', node02, node03);
+    str* node07 = make_node('G', NULL, NULL);
+    str* node06 = make_node('F', node07, NULL);
+    str* node05 = make_node('E', node07, NULL);
+    str* node04 = make_node('D', node07, NULL);
+    str* node03 = make_node('C', node05, NULL);
+    str* node02 = make_node('B', node04, NULL);
+    str* node01 = make_node('A', node02, NULL);
 
     preorder(node01);
 }
