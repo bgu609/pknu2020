@@ -3,7 +3,7 @@
   version - 1.0
   description - 기본 메인 함수
   --------------------------------------------------------------------------------
-  
+
   writer - GWB.
 */
 
@@ -11,91 +11,174 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int n = 0;
 
-int array[] = { 69,10,30,2,16,8,31,22 };
-int read = sizeof(array) / sizeof(int);
+struct str_unit { int item; struct str_unit* link; };
+typedef struct str_unit str;
 
-int pivot(int array[], int start, int end);
-void divide(int array[], int start, int end);
+
+str* head;
+str* tail;
+str* stack;
+
+
+int isEmpty();
+int isFull();
+void push(int item);
+int pop();
+int peek();
+void printStack();
+void rev_printStack();
 
 int main(void)
 {
-    printf("[초기 상태]\n");
-    for (int i = 0; i < read; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    printf("\n\n");
+    head = NULL;
+    tail = NULL;
+    
+    push(1); push(2); push(3); push(4);
 
-    int start = 0;
-    int end = sizeof(array) / sizeof(int) - 1;
-
-
-
-    divide(array, start, end);
+    printStack();
+    rev_printStack();
 }
 
-int pivot(int array[], int start, int end)
+int isEmpty() // 비어있는지 여부
 {
-    int pivot = (end + start) / 2;
-    int Left = start;
-    int Right = end;
-    int change;
-
-    printf("[%d단계 : pivot=%d]\n", ++n, array[pivot]);
-
-    for (Left; Left < end; Left++)
+    if (tail == NULL)
     {
-        if (array[Left] >= array[pivot])
-        {
-            break;
-        }
-    }
-
-    for (Right; Right > start; Right--)
-    {
-        if (array[Right] < array[pivot])
-        {
-            break;
-        }
-    }
-
-    printf("%d : %d\n", Left, Right);
-
-    if (Left == Right)
-    {
-        change = array[pivot];
-        array[pivot] = array[Left];
-        array[Left] = change;
-
-        return Left;
+        return 1;
     }
     else
     {
-        change = array[Right];
-        array[Right] = array[Left];
-        array[Left] = change;
+        return 0;
     }
 }
 
-void divide(int array[], int start, int end)
+int isFull() // 스택 포화상태 여부
 {
-    for (int i = 0; i < read; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    printf("\n\n");
+    return 0;
+}
 
-    int div;
-    if (start < end)
+void push(int item) // 스택에 원소를 삽입하는 연산
+{
+    stack = (str*)malloc(sizeof(str));
+
+    stack->item = item;
+    stack->link = NULL;
+
+    if (head == NULL)
     {
-        div = pivot(array, start, end);
-        divide(array, start, div);
-        divide(array, div + 1, end);
+        head = stack;
+        tail = stack;
+    }
+    else
+    {
+        tail->link = stack;
+        tail = stack;
     }
 }
+
+int pop() // 스택에 원소를 삭제하는 연산
+{
+    if (isEmpty())
+    {
+        printf("\nstack is empty\n");
+        exit(1);
+    }
+
+    str* read;
+    str* dead;
+    read = head;
+    dead = tail;
+    int data = dead->item;
+
+    if (read == dead)
+    {
+        head = NULL;
+        tail = NULL;
+    }
+    else
+    {
+        while (read->link != dead)
+        {
+            read = read->link;
+        }
+
+        read->link = NULL;
+        tail = read;
+    }
+
+    free(dead);
+
+    return data;
+}
+
+int peek() // 스택의 top 원소를 검색하는 연산
+{
+    if (isEmpty())
+    {
+        printf("\nstack is empty\n");
+        exit(1);
+    }
+
+    return tail->item;
+}
+
+void printStack() // 스택의 원소를 출력하는 연산
+{
+    str* read;
+    read = head;
+
+    printf("\nSTACK [ ");
+    while (read != NULL)
+    {
+        if (isEmpty())
+        {
+            exit(1);
+        }
+
+        printf("%d ", read->item);
+        read = read->link;
+    }
+    printf("]\n");
+}
+
+void rev_printStack() // 스택의 원소를 reverse 출력하는 연산
+{
+    str* read;
+    str* stop;
+
+    printf("\nSTACK [ ");
+    read = head;
+    stop = tail;
+
+    if (isEmpty()==0)
+    {
+        printf("%d ", stop->item);
+    }
+
+    while (stop != head)
+    {
+        while (read->link != stop)
+        {
+            if (isEmpty())
+            {
+                exit(1);
+            }
+
+            read = read->link;
+        }
+        printf("%d ", read->item);
+        stop = read;
+        read = head;
+    }
+    
+    printf("]\n");
+}
+
+/*save
+
+*/
 
 
 /*
@@ -648,5 +731,49 @@ void exam(void)
         }
         rank++;
     }
+    */
+
+    /*
+    char string[20];
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    int d = 0;
+    int str;
+
+    printf("입력 : ");
+    scanf("%s", &string);
+
+    for (int i=0; i < 20; i++)
+    {
+        if (string[i] == NULL)
+        {
+            break;
+        }
+
+        str = string[i];
+
+        if ((str >= 48) && (str <= 57))
+        {
+            a++;
+        }
+        else if((str >= 65) && (str <= 90))
+        {
+            b++;
+        }
+        else if ((str >= 97) && (str <= 122))
+        {
+            c++;
+        }
+        else
+        {
+            d++;
+        }
+    }
+    printf("\n");
+    printf("대문자 : %d\n", b);
+    printf("소문자 : %d\n", c);
+    printf("숫자 : %d\n", a);
+    printf("특수문자 : %d\n", d);
     */
 }
