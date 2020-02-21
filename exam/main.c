@@ -13,7 +13,90 @@
 #include <stdlib.h>
 #include <string.h>
 
+void binarySearch(int array[], int begin, int end, int key);
 
+int r = 0;
+
+int main(void)
+{
+    int array[] = { 1, 2, 8, 9, 11, 19, 29 }, key;
+    int n = 7;
+
+    printf("\n %d를 검색하라! ->> ", key = 11);
+    binarySearch(array, 0, n, key); // 탐색키가 11인 원소 검색
+
+    printf("\n %d를 검색하라! ->> ", key = 6);
+    binarySearch(array, 0, n, key); // 탐색키가 6인 원소 검색
+
+    printf("\n %d를 검색하라! ->> ", key = 2);
+    binarySearch(array, 0, n, key); // 탐색키가 2인 원소 검색
+
+    printf("\n %d를 검색하라! ->> ", key = 9);
+    binarySearch(array, 0, n, key); // 탐색키가 9인 원소 검색
+
+    getchar();
+}
+
+void binarySearch(int array[], int begin, int end, int key)
+{
+    int stand = (begin + end) / 2;
+    int divide = 0;
+    
+    ++r;
+
+
+    if (array[stand] == key)
+    {
+        printf("%d번째에 %d 검색", r, array[stand]);
+        r = 0;
+        return;
+    }
+
+    if (stand == 0)
+    {
+        printf("%d번째에 검색 실패", r);
+        r = 0;
+        return;
+    }
+
+    if (stand != begin)
+    {
+        if (key < array[stand])
+        {
+            for (int i = begin; i < stand; i++)
+            {
+                if (array[i] == key)
+                {
+                    printf("%d번째에 %d 검색", r, array[i]);
+                    r = 0;
+                    return;
+                }
+                divide = (begin + i) / 2;
+            }
+
+            binarySearch(array, begin, divide, key);
+            binarySearch(array, divide, stand, key);
+        }
+        else if (array[stand] < key)
+        {
+            for (int i = stand + 1; i < end; i++)
+            {
+                if (array[i] == key)
+                {
+                    printf("%d번째에 %d 검색", r, array[i]);
+                    r = 0;
+                    return;
+                }
+                divide = (stand + 1 + i) / 2;
+            }
+
+            binarySearch(array, stand + 1, divide, key);
+            binarySearch(array, divide, end, key);
+        }
+    }
+}
+
+/*save
 struct str_unit { int item; struct str_unit* link; };
 typedef struct str_unit str;
 
@@ -22,6 +105,16 @@ str* head;
 str* tail;
 str* stack;
 
+int main(void)
+{
+    head = NULL;
+    tail = NULL;
+
+    push(1); push(2); push(3); push(4);
+
+    printStack();
+    rev_printStack();
+}
 
 int isEmpty();
 int isFull();
@@ -30,17 +123,6 @@ int pop();
 int peek();
 void printStack();
 void rev_printStack();
-
-int main(void)
-{
-    head = NULL;
-    tail = NULL;
-    
-    push(1); push(2); push(3); push(4);
-
-    printStack();
-    rev_printStack();
-}
 
 int isEmpty() // 비어있는지 여부
 {
@@ -172,12 +254,9 @@ void rev_printStack() // 스택의 원소를 reverse 출력하는 연산
         stop = read;
         read = head;
     }
-    
+
     printf("]\n");
 }
-
-/*save
-
 */
 
 
